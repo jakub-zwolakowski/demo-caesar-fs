@@ -15,8 +15,8 @@ cov:
 
 .PHONY: tis
 tis:
-	@echo -e "\\x1b[00;36mtis-mkfs -local shift.in:shift.in -local text.in:text.in\\x1b[00m"
-	@tis-mkfs -local shift.in:shift.in -local text.in:text.in
+	@echo -e "\\x1b[00;36mtis-mkfs -generic shift.in:8:0:255 -local text.in:text.in\\x1b[00m"
+	@tis-mkfs -generic shift.in:8:0:255 -local text.in:text.in
 	@echo -e "\\x1b[00;36mtis-analyzer-gui -64 -I . -val -slevel 100 caesar.c main_fs.c -no-val-print -fs mkfs_filesystem.c -no-fs-error\\x1b[00m"
 	@tis-analyzer-gui -64 -I . -val -slevel 100 caesar.c main_fs.c -no-val-print -fs mkfs_filesystem.c -no-fs-error
 
