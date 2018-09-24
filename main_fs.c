@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <string.h>
+#include <limits.h>
 
 #define MAX_STR_LEN 256
 
@@ -51,7 +52,8 @@ int main(void)
 
     int str_len = i + 1;
 
-    gen_test(str, str_len, shift);
+    if(INT_MIN < shift && shift <= INT_MAX)
+      gen_test(str, str_len, shift);
 
     return 0;
 }
