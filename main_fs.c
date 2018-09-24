@@ -7,16 +7,18 @@
 
 #define MAX_STR_LEN 256
 
-void gen_test(char *str, int shift)
+void gen_test(char *str, int str_len, int shift)
 {
     char *res1, *res2;
 
     printf("Encrypt text '%s'\n", str);
-    res1 = caesar_encrypt(str, shift);
+    res1 = caesar_encrypt(str, str_len, shift);
+    if (!res1) return;
     printf("Result:       %s\n", res1);
 
     printf("Decrypt text '%s'\n", res1);
-    res2 = caesar_decrypt(res1, shift);
+    res2 = caesar_decrypt(res1, str_len, shift);
+    if (!res2) return;
     printf("Result:       %s\n", res2);
 
     free(res1);
@@ -47,7 +49,9 @@ int main(void)
     }
     fclose(fid_text);
 
-    gen_test(str, shift);
+    int str_len = i + 1;
+
+    gen_test(str, str_len, shift);
 
     return 0;
 }
